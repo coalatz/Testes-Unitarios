@@ -98,11 +98,20 @@ class SimpleMathTest {
 		assertEquals(expected, actual, () -> "testDiv() nao produziu resultado esperado");
 	}
 
-	@Disabled
 	@Test
 	@DisplayName("test 5 / 0 = exception")
 	void testDivZero() {
-		fail();
+		//given
+		double firstNumber = 5D;
+		double secondNumber = 0D;
+		var expectedMessage = "impossivel dividir por zero";
+		
+		ArithmeticException actual = Assertions.assertThrows(ArithmeticException.class, () -> {
+			//when & then
+			math.division(firstNumber, secondNumber);
+		}, () -> "Division by zero should throw an ArithmeticException");
+		
+		assertEquals(expectedMessage, actual.getMessage(), () -> "esperado exeception message");
 
 	}
 
