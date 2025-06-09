@@ -1,0 +1,31 @@
+package br.coala;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+
+@TestMethodOrder(MethodOrderer.Random.class)
+class MethodOrderRandonlyTest {
+
+	@Test
+	void testA() {
+		System.out.println("teste a");
+	}
+	
+	@Test
+	void testB() {
+		System.out.println("teste b");
+	}
+	
+	@Test
+	void testC() {
+		System.out.println("teste c");
+	}
+	@Test
+	void testD() {
+		System.out.println("teste d");
+	}
+
+}
