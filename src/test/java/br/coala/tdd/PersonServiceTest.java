@@ -2,6 +2,7 @@ package br.coala.tdd;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -100,5 +101,19 @@ class PersonServiceTest {
 		assertNotNull(actual.getId());
 	}
 	
+	@DisplayName("Verificar se nao criacao de Person email nao vem null")
+	@Test
+	void testCreatePerson_whithNullEmail_ShouldIllegalException() {
+		// Given / Arrange
+		person.setEmail(null);
+		var expected = "The email not null";
+		// When / Act
+		// Then / Assert
+		IllegalArgumentException actual = assertThrows(IllegalArgumentException.class, 
+				() -> service.createPerson(person),
+				() -> "email not null cause IllegalArgumentException");
+		
+		assertEquals(expected, actual.getMessage());
+	}
 	
 }
